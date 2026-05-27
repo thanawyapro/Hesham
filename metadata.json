@@ -1,0 +1,6 @@
+{
+  "name": "Thanaweya AI Study OS",
+  "description": "منصة تواصل ومذاكرة ذكية لطلاب الثانوية العامة بنظام تشغيل تفاعلي مخصص لأجهزة الموبايل الاندرويد ويدعم بنك أخطاء ومسارات تعليمية مدمجة بالذكاء الاصطناعي.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
