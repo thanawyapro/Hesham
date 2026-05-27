@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل معلّم الذكاء الاصطناعي وصانع برومبت الثانوية العامة</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font setup -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #061225;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #0b1a30;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #3b82f6;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+    }
+    .glow-green {
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+    }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+  <div class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- Top Header Card -->
+    <div class="relative bg-[#0d1e36]/90 border border-slate-800 rounded-3xl p-6 sm:p-8 glow-cyan overflow-hidden">
+      <!-- Background ambient glow -->
+      <div class="absolute -top-24 -left-24 w-48 h-48 rounded-full bg-cyan-500/10 blur-[60px] pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-48 h-48 rounded-full bg-[#10b981]/10 blur-[60px] pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-6">
+        <div class="text-right flex-1 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-black rounded-full">
+            <span>التكامل مع ChatGPT و نماذج الذكاء الاصطناعي</span>
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-normal">
+            بوابة الأساتذة الذكية وصانع البرومبت الفوري للثانوية العامة 🇪🇬
+          </h1>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-3xl">
+            هذه الصفحة هي دليل تفاعلي ومحرك لصياغة الأوامر (البرومبتس) الأكاديمية بدقة بالغة. يمكنك استخدامها للحصول على أدق شرح وأسئلة امتحانات من خلال نسخ البرومبت وتغذيته لـ <strong>ChatGPT</strong> أو <strong>Claude</strong> أو <strong>Gemini</strong>، أو رفع هذا الملف بالكامل كملف معرفة لنموذج الذكاء الاصطناعي ليعلم تفاصيل منهجك الدراسي.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick instructions for ChatGPT -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-[#0b1a30] border border-slate-800 p-5 rounded-2xl space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 font-bold text-lg">💡</div>
+        <h3 class="text-sm font-black text-white">كيف يعمل الدليل؟</h3>
+        <p class="text-xs text-slate-400 leading-loose">
+          اختر الصف الدراسي، المادة، والدرس المطلوب من المحرك التفاعلي بالأسفل، ثم اختر الكبسولة التي تريدها (كشرح تفصيلي أو بنك أسئلة MCQ أو خريطة ذهنية) وسيتم تجميع البرومبت الأنسب فورًا بلمسة واحدة.
+        </p>
+      </div>
+      
+      <div class="bg-[#0b1a30] border border-slate-800 p-5 rounded-2xl space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-bold text-lg">📁</div>
+        <h3 class="text-sm font-black text-white">اقرأني يا ChatGPT!</h3>
+        <p class="text-xs text-slate-400 leading-loose">
+          نماذج الذكاء الاصطناعي الحديثة (مثل ChatGPT Plus) تستطيع قراءة هذا الملف مباشرة عند رفعه كمرفق، حيث يحتوي الكود المصدر على قاعدة بيانات المناهج المصرية المعتمدة وهياكل الامتحانات ليكون المدرس الخصوصي تحت أمرك.
+        </p>
+      </div>
+
+      <div class="bg-[#0b1a30] border border-slate-800 p-5 rounded-2xl space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 font-bold text-lg">⚙️</div>
+        <h3 class="text-sm font-black text-white">جاهز دائمًا للعمل أوفلاين</h3>
+        <p class="text-xs text-slate-400 leading-loose">
+          هذا الملف مستقل تماماً ويعمل بدون إنترنت (Offline). يمكنك حفظه على حاسوبك الشخصي أو هاتفك والوصول إليه في أي لحظة لنسخ روابط الشرح التلقائي وصناعة المسارات التعليمية.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive Prompt Builder Engine -->
+    <div class="bg-[#0d1e36]/80 border border-slate-800 rounded-3xl p-6 glow-green space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span>المحرك التفاعلي لصناعة البرومبت والأكواد الأكاديمية</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">قم بتحديد المادة والكبسولة التعليمية وسيتم تحديث البرومبت الموجه للذكاء الاصطناعي في الأسفل تلقائيًا.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- Step 1: Grade Selection -->
+        <div class="space-y-1.5 text-right">
+          <label class="text-xs font-bold text-slate-400 block mr-1">1. الصف الدراسي والشعبة</label>
+          <select id="gradeSelect" onchange="updateSubjects()" class="w-full bg-[#071324] border border-slate-700 text-sm text-slate-200 rounded-xl py-3 px-3.5 focus:border-cyan-500 outline-none">
+            <option value="grade-3">الصف الثالث الثانوي (المنهج الكامل)</option>
+            <option value="grade-2">الصف الثاني الثانوي</option>
+            <option value="grade-1">الصف الأول الثانوي</option>
+          </select>
+        </div>
+
+        <!-- Step 2: Subject Selection -->
+        <div class="space-y-1.5 text-right">
+          <label class="text-xs font-bold text-slate-400 block mr-1">2. المادة التعليمية</label>
+          <select id="subjectSelect" onchange="updateLessons()" class="w-full bg-[#071324] border border-slate-700 text-sm text-slate-200 rounded-xl py-3 px-3.5 focus:border-cyan-500 outline-none">
+            <!-- Populated via Javascript -->
+          </select>
+        </div>
+
+        <!-- Step 3: Lesson Selection -->
+        <div class="space-y-1.5 text-right">
+          <label class="text-xs font-bold text-slate-400 block mr-1">3. الدرس النشط</label>
+          <select id="lessonSelect" onchange="generatePrompt()" class="w-full bg-[#071324] border border-slate-700 text-sm text-slate-200 rounded-xl py-3 px-3.5 focus:border-cyan-500 outline-none">
+            <!-- Populated via Javascript -->
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Step 4: Capsule Template Selectors -->
+      <div class="space-y-2">
+        <label class="text-xs font-bold text-slate-400 block mr-1">4. كبسولة المدرس الفورية (اختر نوع المخرجات المطلوبة):</label>
+        <div id="capsulesGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <!-- Generated Prompt Textarea Output -->
+      <div class="space-y-2 pt-2">
+        <div class="flex justify-between items-center text-xs font-bold">
+          <span class="text-emerald-400 tracking-wide font-mono select-none">PROMPT OUTPUT:</span>
+          <span class="text-slate-400">البرومبت المقترح (جاهز للنسخ المباشر لـ ChatGPT)</span>
+        </div>
+        
+        <div class="relative">
+          <textarea id="promptOutput" readonly class="w-full bg-[#071324] border border-slate-800 rounded-2xl p-4 text-xs font-mono text-slate-200 min-h-[160px] max-h-[300px] outline-none border focus:border-emerald-500 leading-relaxed custom-scroll text-right" dir="rtl"></textarea>
+          
+          <div class="absolute bottom-3 left-3 flex items-center gap-2">
+            <!-- Copy button -->
+            <button onclick="copyPromptToClipboard()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 px-4 rounded-xl flex items-center gap-1.5 shadow transition-all cursor-pointer">
+              <svg id="copyIcon" class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+              <span id="copyText">نسخ البرومبت</span>
+            </button>
+            
+            <!-- Direct Open in ChatGPT -->
+            <button onclick="openInChatGPT()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs py-2 px-4 rounded-xl flex items-center gap-1.5 shadow transition-all cursor-pointer">
+              <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              <span>فتح ChatGPT وإرسال</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hidden System Instructions & Syllabus Details for ChatGPT -->
+    <div class="bg-[#0b1a30] border border-slate-800 rounded-3xl p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-black text-rose-400 flex items-center gap-2">
+          <span>سجل مرشدي التأسيس لـ ChatGPT (System Instruction Template)</span>
+        </h3>
+        <span class="text-[10px] text-slate-500">انسخ لتغذية النماذج اللغوية الكبيرة</span>
+      </div>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        قم بنسخ الإرشادات بالأسفل والصقها في حقل "التوجيهات المخصصة" (Custom Instructions) داخل حسابك في ChatGPT أو في بداية جلستك مع المحادثة الذكية لتجعل منه دائمًا أستاذًا ملتزمًا بمعايير وزارة التربية والتعليم المصرية:
+      </p>
+      
+      <div class="bg-[#061225] border border-slate-900 rounded-xl p-4 font-mono text-[11px] text-amber-500/90 space-y-2 leading-relaxed text-right select-all">
+        <p class="font-bold border-b border-slate-800 pb-1.5 text-xs text-white">انسخ التعليمات التالية كتعليمات نظام كاملة (System Instructions):</p>
+        <p>"أنت مدرس خبير ومساعد أكاديمي مخصص لطلاب الثانوية العامة في مصر (الصف الأول والصف الثاني والصف الثالث الثانوي). التزم تلتزمًا تامًا بالمعايير التالية:</p>
+        <p>1. <strong>المحتوى العلمي:</strong> التزم بالمنهج المصري الصادر عن وزارة التربية والتعليم مع تبسيط المفاهيم الصعبة (في الفيزياء، الكيمياء، الأحياء، النحو، البلاغة، الفلسفة، إلخ).</p>
+        <p>2. <strong>أسلوب التدريس والأمثلة المنهجية:</strong> وازن دائمًا بين تبيين المفاهيم وحل المسائل الصعبة، مع التركيز على شرح 'كمائن الامتحانات' (الفخاخ) وحيل المشتتات والكلمات المتقاطعة والربط الدقيق والبعد عن الحفظ الأعمى.</p>
+        <p>3. <strong>تقسيم الإجابة الشارحة:</strong> قسّم ردودك دائمًا إلى عناوين واضحة تبدأ بـ (# أو ## أو ###)، واستخدم النقط المتتالية لتفعيل القراءة البصرية المريحة والتثقيف الاستباقي."</p>
+      </div>
+    </div>
+
+    <!-- Footer Credit and Copyright details -->
+    <div class="text-center text-[11px] text-slate-500 py-4 border-t border-slate-900 leading-relaxed">
+      <span>نظام المذاكرة الذكي للثانوية العامة المصرية • تم التطوير بالذكاء الاصطناعي الفتاك 2026</span>
+    </div>
+
+  </div>
+
+  <script>
+    // Embedded Database variables
+    const CAPSULE_TEMPLATES = [
+      { id: "explain", name: "شرح الدرس تفصيليًا", desc: "شرح شامل بالفكرة والقانون والأمثلة", prompt: "اشرح هذا الدرس شرحًا شاملًا وسلسًا ومنظمًا للمرحلة المحددة: الفكرة، القاعدة، خطوات الحل، أمثلة محلولة، أخطاء شائعة، وملخص سريع." },
+      { id: "simplify", name: "تبسيط الدرس من الصفر", desc: "أمثلة بديهية للشرح التأسيسي الأولي", prompt: "بسّط هذا الدرس كأني لا أعرف عنه شيئًا تمامًا. ابدأ من البديهيات البسيطة وبأمثلة سهلة من الواقع، ثم ارفع المستوى النظري تدريجيًا." },
+      { id: "summary", name: "ملخص ليلة الامتحان", desc: "أهم القوانين والخلاصات والكمائن", prompt: "اعمل ملخص آخر دقيقة وسريع لهذا الدرس: أهم القواعد أو القوانين، الكلمات المفتاحية لمخرجات التعلم، أشهر الفخاخ، 5 نقاط للحفظ، و5 أسئلة متوقعة بإجابات مختصرة." },
+      { id: "mcq", name: "أسئلة شبه الامتحان المتوقع", desc: "اختبر ذكائي بمسائل محاكية لوزارة التعليم", prompt: "اصنع أسئلة محاكية تماماً لامتحان الثانوية العامة على هذا الدرس: سؤال مباشر، ثم سؤال فكرة ملتوية بحرفية، سؤال اختيارين متشابهين، سؤال طويل، وسؤال تحدي قوي. لا تعرض الإجابات إلا بعد محاولتي وتصحيحك." },
+      { id: "interactive", name: "اختبار MCQ تفاعلي", desc: "15 سؤال اختيار من متعدد وتفسير", prompt: "اختبرني وبادرني بأسئلة MCQ تفاعلية متدرجة المستوى (فهم وتطبيق وتحليل وتحدي) سؤالاً بسؤال. بعد كل إجابة أرسلها لك، صححها فوراً وفسر لي الخيارات بشكل منهجي." },
+      { id: "mindmap", name: "خريطة ذهنية نصية", desc: "بناء الرابط الذهني بجدول مقارنة مفصل", prompt: "اعمل خريطة ذهنية نصية واضحة ومنظمة بصرية لهذا الدرس لتسهيل الحفظ المترابط، مع إبراز جدول مقارنة للمتشابهات وقواعد ربط منطقية." },
+      { id: "correction", name: "صحح إجابتي بالتفصيل", desc: "قدم لي تصحيحًا بالدرجة وتقييم أخطائي", prompt: "اسألني أولاً عن إجابتي أو المفهوم الذي أذكره عن هذا الدرس، ثم صحح ما كتبته بدقة وأعطني درجة بالرقم، ووضح وجه الصواب والخطأ، وقاعدة تذكر وسؤال تدريبي مشابه." },
+      { id: "errorbank", name: "أضف لـ بنك أخطائي", desc: "تحليل الفخ ومعالجته بقاعدة ذكية", prompt: "سأعرض عليك حلاً خاطئاً قمت به في هذا الدرس، وأريدك أن تحوله إلى سجل بنك أخطاء أكاديمي يشتمل على: نص السؤال، إجابتي غير الصحيحة، الصواب، سبب التسرع أو الخطأ، نوع الخدعة، قاعدة التذكر، وتدريب مشابه لعلاج الخلل." }
+    ];
+
+    const CURRICULUM = {
+      "grade-3": {
+        title: "الصف الثالث الثانوي (المنهج الكامل)",
+        subjects: [
+          {
+            title: "اللغة العربية",
+            units: [
+              { title: "القراءة والفهم المتحرر", lessons: ["الفكرة الرئيسية والأفكار الفرعية", "معنى الكلمة من السياق", "العلاقات بين الجمل والفقرات", "استنتاج الهدف والاتجاه"] },
+              { title: "النصوص والبلاغة التطبيقية", lessons: ["تحليل العاطفة والفكرة في الأبيات", "التشبيه وأنواعه (البليغ، التمثيلي، الضمني)", "الاستعارة المكنية والتصريحية وأسرارها", "المجاز المرسل وعلاقاته البلاغية"] },
+              { title: "النحو والتراكيب وصناعة القواعد", lessons: ["المبتدأ والخبر وأنواعهما وصور التقدم", "كان الكادحة وأخواتها التامة والناقصة", "إن وأخواتها وضوابط تفعيل جنس المعنى", "المنصوبات: المفاعيل الخمسة، الحال، التمييز والمستثنى"] }
+            ]
+          },
+          {
+            title: "اللغة الإنجليزية (English)",
+            units: [
+              { title: "Grammar & Structure", lessons: ["Present Tenses & Custom Usages", "Past Tense Complexities & Narratives", "Future Forms, Commitments & Decisions", "Active and Passive voice in exams"] },
+              { title: "Writing Skills & Vocabs", lessons: ["Cohesion, Paragraph Structure & Essay Layouts", "Phrasal Verbs, Collocations & Idioms"] }
+            ]
+          },
+          {
+            title: "الفيزياء الحديثة والكهربية",
+            units: [
+              { title: "الكهربية التيارية وقانون أوم وكيرشوف", lessons: ["شدة التيار وقانون أوم للمقاومات الكهربية", "توصيل المقاومات على التوالي والتوازي", "قانون أوم للدائرة المغلقة وقوانين كيرشوف المنقذة"] },
+              { title: "التأثير المغناطيسي وأجهزة القياس", lessons: ["المجال المغناطيسي لسلك وملف ودائري", "القوة المغناطيسية وعزم الازدواج الناشئ", "أجهزة القياس الكهربي: الجلفانومتر، الأميتر، الفولتميتر والملتيمتر"] }
+            ]
+          },
+          {
+            title: "الكيمياء العامة والعضوية",
+            units: [
+              { title: "العناصر الانتقالية والحديد", lessons: ["الأهمية الاقتصادية للخصائص الانتقالية", "خامات الحديد وعمليات الاختزال والتحميص", "تفاعلات الحديد وكواشف السبائك وأنواعها"] },
+              { title: "الكيمياء العضوية", lessons: ["مقدمة في كيمياء الكربون وحلم دوف", "الأليفاتية: الألكانات، الألكينات، والألكاينات", "الأروماتية: البنزين العطري وتفاعلات الإحلال", "الكحوليات والفينولات والاسترات وصنع الصابون"] }
+            ]
+          }
+        ]
+      },
+      "grade-2": {
+        title: "الصف الثاني الثانوي",
+        subjects: [
+          {
+            title: "اللغة العربية",
+            units: [
+              { title: "قواعد لغوية وبلاغة", lessons: ["إعراب وأدوات جزم الفعل المضارع وحروف الشرط", "المحسنات البديعية وتأثير المعاني الإنشائية", "مصادر الأفعال الثلاثية وغير الثلاثية"] }
+            ]
+          },
+          {
+            title: "الفيزياء الميكانيكية",
+            units: [
+              { title: "الموجات والضوء", lessons: ["الحركة الاهتزازية ومفهوم التردد والموجة", "خصائص الضوء: الانعكاس، الانكسار، التداخل، والحيود", "الانعكاس الكلي والزاوية الحرجة وتطبيقات الألياف ضوئية"] }
+            ]
+          }
+        ]
+      },
+      "grade-1": {
+        title: "الصف الأول الثانوي",
+        subjects: [
+          {
+            title: "اللغة العربية",
+            units: [
+              { title: "البلاغة والأدب والنحو", lessons: ["الحقيقة والمجاز والتعبير الإنساني", "الأدب في العصر الجاهلي وسماته الفكرية", "الأفعال الناقصة والتامة (كان وأخواتها)"] }
+            ]
+          },
+          {
+            title: "الكيمياء الكمية والنووية",
+            units: [
+              { title: "الكيمياء مركز العلوم والمول", lessons: ["المول وكتلة المواد وتحليل المقادير الكيميائية", "المحاليل والغرويات وعوامل الترسيب والنظر في الأقسام"] }
+            ]
+          }
+        ]
+      }
+    };
+
+    let activeCapsuleId = "explain";
+
+    // Setup capsules grid on load
+    function initCapsules() {
+      const grid = document.getElementById('capsulesGrid');
+      grid.innerHTML = '';
+      CAPSULE_TEMPLATES.forEach(cap => {
+        const btn = document.createElement('button');
+        btn.id = `cap-${cap.id}`;
+        btn.type = 'button';
+        btn.onclick = () => selectCapsule(cap.id);
+        btn.className = `p-3 rounded-xl border text-right transition-all flex flex-col gap-0.5 cursor-pointer hover:border-cyan-500/50 ${cap.id === activeCapsuleId ? 'bg-cyan-500/10 border-cyan-500 text-white shadow' : 'bg-[#071324] border-slate-700 text-slate-300'}`;
+        btn.innerHTML = `
+          <span class="text-xs font-bold text-white">${cap.name}</span>
+          <span class="text-[10px] text-slate-400 mt-0.5 leading-tight">${cap.desc}</span>
+        `;
+        grid.appendChild(btn);
+      });
+    }
+
+    function selectCapsule(id) {
+      // Toggle active states
+      document.getElementById(`cap-${activeCapsuleId}`).className = "p-3 rounded-xl border text-right transition-all flex flex-col gap-0.5 cursor-pointer bg-[#071324] border-slate-700 text-slate-300 hover:border-cyan-500/50";
+      activeCapsuleId = id;
+      document.getElementById(`cap-${id}`).className = "p-3 rounded-xl border text-right transition-all flex flex-col gap-0.5 cursor-pointer bg-cyan-500/10 border-cyan-500 text-white shadow";
+      
+      generatePrompt();
+    }
+
+    function updateSubjects() {
+      const grade = document.getElementById('gradeSelect').value;
+      const subSelect = document.getElementById('subjectSelect');
+      subSelect.innerHTML = '';
+      
+      const data = CURRICULUM[grade];
+      if (data && data.subjects.length > 0) {
+        data.subjects.forEach(sub => {
+          const opt = document.createElement('option');
+          opt.value = sub.title;
+          opt.textContent = sub.title;
+          subSelect.appendChild(opt);
+        });
+      }
+      updateLessons();
+    }
+
+    function updateLessons() {
+      const grade = document.getElementById('gradeSelect').value;
+      const subTitle = document.getElementById('subjectSelect').value;
+      const lesSelect = document.getElementById('lessonSelect');
+      lesSelect.innerHTML = '';
+
+      const data = CURRICULUM[grade];
+      const subject = data.subjects.find(s => s.title === subTitle);
+      
+      if (subject && subject.units.length > 0) {
+        subject.units.forEach(unit => {
+          const group = document.createElement('optgroup');
+          group.label = unit.title;
+          
+          unit.lessons.forEach(lesson => {
+            const opt = document.createElement('option');
+            opt.value = lesson;
+            opt.textContent = lesson;
+            opt.dataset.unit = unit.title;
+            group.appendChild(opt);
+          });
+          
+          lesSelect.appendChild(group);
+        });
+      }
+      generatePrompt();
+    }
+
+    function generatePrompt() {
+      const gradeVal = document.getElementById('gradeSelect').value;
+      const gradeLabel = CURRICULUM[gradeVal].title;
+      const subjectVal = document.getElementById('subjectSelect').value;
+      const lessonSelect = document.getElementById('lessonSelect');
+      
+      if (!lessonSelect.value) {
+        document.getElementById('promptOutput').value = "يرجى تحديد صف دراسي ومادة ودرس ليتم توليد البرومبت هنا...";
+        return;
+      }
+
+      const lessonVal = lessonSelect.value;
+      const selectedOpt = lessonSelect.options[lessonSelect.selectedIndex];
+      const unitLabel = selectedOpt ? selectedOpt.dataset.unit : '';
+      
+      const capsule = CAPSULE_TEMPLATES.find(c => c.id === activeCapsuleId);
+      
+      const prompt = `أنت مدرس متخصص قدير وصاحب معرفة شاملة في مادة (${subjectVal}) المعتمدة لطلاب الثانوية العامة في مصر للمستوى الدراسي: (${gradeLabel}).
+
+الموقع الدراسي المطلوب:
+- الوحدة: ${unitLabel}
+- اسم الدرس المستهدف: ${lessonVal}
+
+التعليمات والكبسولة المطلوبة فورًا منك:
+${capsule.prompt}
+
+اجب الآن شرحًا بليغًا ومتقنًا باللغة العربية بتبويب دقيق وبالعلامات المقسمة المريحة للعين البصرية.`;
+
+      document.getElementById('promptOutput').value = prompt;
+    }
+
+    function copyPromptToClipboard() {
+      const copyText = document.getElementById("promptOutput");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); // For mobile devices
+      
+      navigator.clipboard.writeText(copyText.value);
+      
+      // Feedback
+      const btnText = document.getElementById('copyText');
+      const btnIcon = document.getElementById('copyIcon');
+      
+      btnText.innerText = "تم النسخ بنجاح!";
+      
+      setTimeout(() => {
+        btnText.innerText = "نسخ البرومبت";
+      }, 2000);
+    }
+
+    function openInChatGPT() {
+      const promptText = document.getElementById('promptOutput').value;
+      const chatUrl = `https://chatgpt.com/?q=${encodeURIComponent(promptText)}`;
+      window.open(chatUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // Initialize triggers on window load
+    window.onload = function() {
+      initCapsules();
+      updateSubjects();
+    };
+  </script>
+</body>
+</html>

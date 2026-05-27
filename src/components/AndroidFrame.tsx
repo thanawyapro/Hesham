@@ -15,7 +15,6 @@ export default function AndroidFrame({ children }: AndroidFrameProps) {
   const [isFramed, setIsFramed] = useState<boolean>(true);
   const [currentTime, setCurrentTime] = useState<string>('18:00');
   const [batteryLevel] = useState<number>(88);
-  const [isPwaInstalled] = useState<boolean>(false);
 
   // Keep the clock inside the Android status bar running
   useEffect(() => {
@@ -46,19 +45,11 @@ export default function AndroidFrame({ children }: AndroidFrameProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#070e1c] text-slate-100 flex flex-col items-center">
+    <div className="min-h-screen bg-bg-secondary text-text-primary flex flex-col items-center select-none transition-colors duration-200">
       {/* Visual Header Controls (Only shown in browser) */}
       <h1 className="sr-only">Thanaweya AI Study OS</h1>
-      <div className="w-full bg-[#0a152d]/80 backdrop-blur-md border-b border-white/5 py-3 px-4 flex flex-wrap justify-between items-center z-50 text-xs">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/15 py-1 px-2.5 rounded-full font-semibold">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>نظام التشغيل الذكي إصدار V9 Android PWA</span>
-          </div>
-          <span className="text-slate-400 hidden sm:inline">|</span>
-          <span className="text-slate-400 font-medium hidden sm:inline">مثالي للشاشات اللمسية وتثبيته كـ App مستقل</span>
-        </div>
-
+      <div className="w-full bg-bg-card border-b border-border-card py-2.5 px-4 flex flex-wrap justify-between items-center z-50 text-xs shadow-sm flex-row-reverse">
+        
         <div className="flex items-center gap-2 mt-2 sm:mt-0">
           {/* Diagnostic info or help */}
           <button 
@@ -71,79 +62,88 @@ export default function AndroidFrame({ children }: AndroidFrameProps) {
                 "سيتحول على الفور إلى تطبيق جوال أصيل بدون حواف المتصفح!"
               );
             }}
-            className="flex items-center gap-1.5 cursor-pointer bg-white/5 hover:bg-white/10 text-slate-300 py-1.5 px-3 rounded-lg font-medium transition-all"
+            className="flex items-center gap-1.5 cursor-pointer bg-bg-card-light hover:bg-bg-secondary border border-border-card text-text-secondary py-1.5 px-3 rounded-xl font-bold transition-all text-[11px]"
           >
-            <Download className="w-3.5 h-3.5 text-blue-400" />
+            <Download className="w-3.5 h-3.5 text-accent-blue" />
             <span>تثبيت على الموبايل</span>
           </button>
 
           {/* Frame toggler */}
-          <div className="bg-black/40 border border-white/5 rounded-lg p-0.5 flex gap-1">
+          <div className="bg-bg-secondary border border-border-card rounded-xl p-0.5 flex gap-1">
             <button
               onClick={() => setIsFramed(true)}
-              className={`flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-md transition-all ${isFramed ? 'bg-[#2563eb] text-white shadow-md' : 'text-slate-400 hover:text-white'}`}
+              className={`flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-lg transition-all text-[11px] font-bold ${isFramed ? 'bg-accent-blue text-white shadow-md' : 'text-text-muted hover:text-text-primary'}`}
               title="محاكاة شاشة الموبايل"
             >
               <Smartphone className="w-3.5 h-3.5" />
-              <span className="hidden md:inline font-medium">وضع الموبايل</span>
+              <span className="hidden md:inline">وضع الموبايل</span>
             </button>
             <button
               onClick={() => setIsFramed(false)}
-              className={`flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-md transition-all ${!isFramed ? 'bg-[#2563eb] text-white shadow-md' : 'text-slate-400 hover:text-white'}`}
+              className={`flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-lg transition-all text-[11px] font-bold ${!isFramed ? 'bg-accent-blue text-white shadow-md' : 'text-text-muted hover:text-text-primary'}`}
               title="ملء شاشة المتصفح"
             >
               <Monitor className="w-3.5 h-3.5" />
-              <span className="hidden md:inline font-medium">ملء الشاشة</span>
+              <span className="hidden md:inline">ملء الشاشة</span>
             </button>
           </div>
+        </div>
+
+        <div className="flex items-center gap-3 flex-row-reverse">
+          <div className="flex items-center gap-1 bg-accent-green/10 text-accent-green border border-accent-green/15 py-1 px-2.5 rounded-full font-black text-[10px]">
+            <Cpu className="w-3.5 h-3.5" />
+            <span>نظام التشغيل الذكي إصدار V9 Android PWA</span>
+          </div>
+          <span className="text-text-muted hidden sm:inline">|</span>
+          <span className="text-text-secondary font-black hidden sm:inline text-[10px]">مثالي للشاشات اللمسية وتثبيته كـ App مستقل</span>
         </div>
       </div>
 
       {/* Frame Wrapping */}
-      <div className="flex-1 w-full flex items-center justify-center py-6 px-4 relative overflow-hidden bg-gradient-to-b from-[#061125] to-[#040812] glow-primary">
+      <div className="flex-1 w-full flex items-center justify-center py-6 px-4 relative overflow-hidden bg-bg-secondary glow-primary">
         {isFramed ? (
           /* Android Frame Container */
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-full max-w-[420px] aspect-[9/19] bg-[#0c1a35] rounded-[52px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] border-[10px] border-[#1e2e4f] relative overflow-hidden flex flex-col"
-            style={{ maxHeight: '860px' }}
+            className="w-full max-w-[415px] aspect-[9/19] bg-bg-primary rounded-[48px] shadow-2xl border-[10px] border-bg-card relative overflow-hidden flex flex-col transition-colors duration-200"
+            style={{ maxHeight: '840px' }}
           >
             {/* Camera Bezel Notch */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-[#1e2e4f] rounded-b-2xl z-50 flex items-center justify-center">
-              <div className="w-3.5 h-3.5 rounded-full bg-[#0d1627] border-2 border-slate-700/50 flex items-center justify-center">
-                <div className="w-1 h-1 rounded-full bg-blue-500/60" />
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-bg-card rounded-b-2xl z-50 flex items-center justify-center">
+              <div className="w-3.5 h-3.5 rounded-full bg-bg-primary border-2 border-border-card flex items-center justify-center">
+                <div className="w-1 h-1 rounded-full bg-accent-blue/60" />
               </div>
-              <div className="w-8 h-1 rounded-full bg-slate-800 ml-4" />
+              <div className="w-8 h-1 rounded-full bg-bg-secondary ml-4" />
             </div>
 
             {/* Simulated Side Buttons */}
-            <div className="absolute -left-[13px] top-32 w-[3px] h-12 bg-[#2c4069] rounded-r-md z-40" />
-            <div className="absolute -left-[13px] top-48 w-[3px] h-16 bg-[#2c4069] rounded-r-md z-40" />
-            <div className="absolute -right-[13px] top-36 w-[3px] h-20 bg-[#2c4069] rounded-l-md z-40" />
+            <div className="absolute -left-[13px] top-32 w-[3px] h-12 bg-bg-card rounded-r-md z-40" />
+            <div className="absolute -left-[13px] top-48 w-[3px] h-16 bg-bg-card rounded-r-md z-40" />
+            <div className="absolute -right-[13px] top-36 w-[3px] h-20 bg-bg-card rounded-l-md z-40" />
 
             {/* Android Status Bar */}
-            <div className="h-10 bg-[#061226]/95 pt-2 px-6 flex justify-between items-center text-[10px] font-semibold tracking-wide text-slate-300 z-40 select-none border-b border-white/5 shrink-0 flex-row-reverse">
-              {/* Left aligned widgets inside status bar (Arabic is RTL, so we reverse status bar alignments to fit native system guidelines!) */}
+            <div className="h-10 bg-bg-primary pt-2 px-6 flex justify-between items-center text-[10px] font-semibold tracking-wide text-text-secondary z-40 select-none border-b border-border-card shrink-0 flex-row-reverse transition-colors">
+              {/* Left aligned widgets inside status bar (Arabic is RTL, so we reverse status bar alignments!) */}
               <div className="flex items-center gap-1 mb-1 font-sans">{currentTime}</div>
 
               {/* Right aligned status items */}
               <div className="flex items-center gap-1.5 font-sans">
-                <Battery className="w-3.5 h-3.5 text-emerald-400 rotate-90 scale-x-[-1]" />
+                <Battery className="w-3.5 h-3.5 text-accent-green rotate-90 scale-x-[-1]" />
                 <span className="text-[9px] font-medium">{batteryLevel}%</span>
-                <Wifi className="w-3.5 h-3.5 text-sky-400" />
-                <span className="text-[8px] tracking-tighter bg-[#162947] border border-white/10 px-1 py-0.5 rounded text-sky-300">5G</span>
+                <Wifi className="w-3.5 h-3.5 text-accent-blue" />
+                <span className="text-[8px] tracking-tighter bg-bg-secondary border border-border-card px-1 py-0.5 rounded text-accent-blue">5G</span>
               </div>
             </div>
 
             {/* Embedded Active Application UI Content Screen */}
-            <div className="flex-1 w-full overflow-y-auto overflow-x-hidden relative bg-[#061226] text-slate-100 flex flex-col">
+            <div className="flex-1 w-full overflow-y-auto overflow-x-hidden relative bg-bg-primary text-text-primary flex flex-col transition-colors duration-200">
               {children}
             </div>
 
             {/* Phone Home Virtual Indicator Bar */}
-            <div className="h-6 bg-[#061226] flex items-center justify-center z-40 shrink-0 border-t border-white/5">
-              <div className="w-28 h-1.5 rounded-full bg-slate-600/60 shadow-sm" />
+            <div className="h-5 bg-bg-primary flex items-center justify-center z-40 shrink-0 border-t border-border-card transition-colors">
+              <div className="w-28 h-1.5 rounded-full bg-text-muted/30 shadow-sm" />
             </div>
           </motion.div>
         ) : (
@@ -151,8 +151,8 @@ export default function AndroidFrame({ children }: AndroidFrameProps) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="w-full max-w-7xl mx-auto h-full flex flex-col bg-[#061226]/90 backdrop-blur-md rounded-3xl overflow-hidden border border-white/5 relative shadow-2xl"
-            style={{ minHeight: '80vh' }}
+            className="w-full max-w-6xl mx-auto h-full flex flex-col bg-bg-primary rounded-[28px] overflow-hidden border border-border-card relative shadow-xl transition-colors duration-200"
+            style={{ minHeight: '78vh' }}
           >
             {/* Full Web Responsive Inner View */}
             <div className="flex-1 overflow-y-auto overflow-x-hidden flex flex-col">

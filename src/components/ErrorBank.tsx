@@ -13,9 +13,35 @@ interface ErrorBankProps {
   onRemoveError: (errorId: string) => void;
   onDiagnoseError: (err: ErrorRecord) => void;
   onGlobalDiagnostic: () => void;
+  selectedGrade?: string;
+  selectedTerm?: string;
+  currentTrack?: string;
 }
 
-export default function ErrorBank({ errors, onRemoveError, onDiagnoseError, onGlobalDiagnostic }: ErrorBankProps) {
+export default function ErrorBank({ 
+  errors, 
+  onRemoveError, 
+  onDiagnoseError, 
+  onGlobalDiagnostic,
+  selectedGrade,
+  selectedTerm,
+  currentTrack
+}: ErrorBankProps) {
+  const getGradeLabel = () => {
+    if (selectedGrade === 'grade-1') return 'الصف الأول الثانوي';
+    if (selectedGrade === 'grade-2') return 'الصف الثاني الثانوي';
+    if (selectedGrade === 'grade-3') return 'الصف الثالث الثانوي';
+    return '';
+  };
+
+  const getTermLabel = () => {
+    if (selectedTerm === 'term-1') return 'الترم الأول';
+    if (selectedTerm === 'term-2') return 'الترم الثاني';
+    if (selectedTerm === 'final-revision') return 'المراجعات النهائية';
+    if (selectedTerm === 'full-year') return 'المنهج الكامل';
+    return '';
+  };
+
   return (
     <div className="flex-1 p-4 flex flex-col gap-4 bg-[#061225] select-none text-right overflow-y-auto" dir="rtl">
       
@@ -36,6 +62,18 @@ export default function ErrorBank({ errors, onRemoveError, onDiagnoseError, onGl
           {errors.length} خطأ مسجل
         </div>
       </div>
+
+      {/* Path confirmation label */}
+      {(selectedGrade || selectedTerm) && (
+        <div className="bg-rose-500/5 border border-rose-500/15 p-2.5 rounded-xl text-[10px] font-black text-rose-300 flex items-center gap-1.5 justify-center shrink-0">
+          <span>المسار النشط:</span>
+          <span className="bg-slate-950 px-2 py-0.5 rounded-md text-white font-extrabold">{getGradeLabel()}</span>
+          <span>•</span>
+          <span className="bg-slate-950 px-2 py-0.5 rounded-md text-white font-extrabold">{getTermLabel()}</span>
+          <span>•</span>
+          <span className="bg-slate-950 px-2 py-0.5 rounded-md text-white font-extrabold">{currentTrack || 'مشترك'}</span>
+        </div>
+      )}
 
       {/* Global analysis trigger */}
       {errors.length > 0 && (

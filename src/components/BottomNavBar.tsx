@@ -24,12 +24,12 @@ export default function BottomNavBar({ activeTab, onTabChange, points }: BottomN
   ];
 
   return (
-    <div className="shrink-0 bg-[#0d172a]/95 border-t border-white/5 backdrop-blur-lg safe-padding-bottom z-40 sticky bottom-0">
+    <div className="shrink-0 bg-bg-card/95 border-t border-border-card backdrop-blur-lg safe-padding-bottom z-40 sticky bottom-0">
       <div className="max-w-lg mx-auto flex justify-around items-center py-2 px-1 relative">
         
         {/* Floating Points Widget visible directly above the navigation bar */}
-        <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-[10px] py-1 px-3 rounded-full flex items-center gap-1 shadow-md shadow-amber-500/10 active:scale-95 transition-all select-none border border-amber-300">
-          <Star className="w-3 h-3 fill-slate-950 stroke-none animate-spin-slow" />
+        <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-accent-yellow to-yellow-400 text-slate-950 font-black text-[10px] py-1 px-3 rounded-full flex items-center gap-1 shadow-md shadow-accent-yellow/10 active:scale-95 transition-all select-none border border-amber-350">
+          <Star className="w-3.5 h-3.5 fill-slate-950 stroke-none animate-spin-slow" />
           <span>{points} نقطة إنجاز</span>
         </div>
 
@@ -47,21 +47,21 @@ export default function BottomNavBar({ activeTab, onTabChange, points }: BottomN
               {isActive && (
                 <motion.div
                   layoutId="activeBubble"
-                  className="absolute inset-0 bg-white/5 border border-white/10 rounded-xl"
+                  className="absolute inset-0 bg-accent-blue/10 border border-accent-blue/20 rounded-xl"
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
 
               {/* Icon and indicators */}
               <div className="relative">
-                <Icon className={`w-5 h-5 transition-all ${isActive ? tab.color : 'text-slate-400 hover:text-slate-300'}`} />
+                <Icon className={`w-5 h-5 transition-all ${isActive ? tab.color : 'text-text-secondary hover:text-text-primary'}`} />
                 {tab.badge && (
-                  <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-accent-green animate-ping" />
                 )}
               </div>
 
               {/* Tab Title */}
-              <span className={`text-[11px] font-bold mt-1 tracking-wide transition-all ${isActive ? 'text-white' : 'text-slate-500'}`}>
+              <span className={`text-[11px] font-bold mt-1 tracking-wide transition-all ${isActive ? 'text-text-primary' : 'text-text-muted'}`}>
                 {tab.label}
               </span>
             </button>

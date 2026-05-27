@@ -3,13 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Subject, Action } from './types.ts';
+import { Subject, Action, GradeData } from './types.ts';
+import { GRADE1_LESSON_DATA } from './data/grade1.ts';
+import { GRADE2_LESSON_DATA } from './data/grade2.ts';
+import { GRADE3_LESSON_DATA } from './data/grade3.ts';
 
 export const ACTIONS: Action[] = [
   {
     name: "شرح الدرس",
     description: "شرح شامل ومنظم بالفكرة والقانون والأمثلة",
-    prompt: "اشرح هذا الدرس شرحًا شاملًا وسلسًا ومنظمًا للصف الثالث الثانوي: الفكرة، القاعدة، خطوات الحل، أمثلة محلولة، أخطاء شائعة، ملخص سريع."
+    prompt: "اشرح هذا الدرس شرحًا شاملًا وسلسًا ومنظمًا للمرحلة المحددة: الفكرة، القاعدة، خطوات الحل، أمثلة محلولة، أخطاء شائعة، ملخص سريع."
   },
   {
     name: "تبسيط الشرح",
@@ -44,217 +47,120 @@ export const ACTIONS: Action[] = [
   {
     name: "أضف أخطائي كتحليل",
     description: "تحليل أي فخ وقعت به ووضع قاعدة تذكر ذكية",
-    prompt: "حوّل أي خطأ أقوله لك في هذا الدرس إلى سجل بنك أخطاء: السؤال، إجابتي، الصحيح، سبب الخطأ، نوع الخطأ، قاعدة التذكر، تدريب مشابه."
+    prompt: "عوّل أي خطأ أقوله لك في هذا الدرس إلى سجل بنك أخطاء: السؤال، إجابتي، الصحيح، سبب الخطأ، نوع الخطأ، قاعدة التذكر، تدريب مشابه."
   }
 ];
 
 export const SPECIAL_PROMPTS = {
-  diagnostic: "اعمل اختبار تحديد مستوى سريع في هذه المادة للصف الثالث الثانوي. اسألني 10 أسئلة متدرجة، ثم حلل مستواي وحدد أبدأ من أي وحدة ودرس، وضع خطة علاج مختصرة.",
+  diagnostic: "اعمل اختبار تحديد مستوى سريع في هذه المادة للمرحلة المحددة. اسألني 10 أسئلة متدرجة، ثم حلل مستواي وحدد أبدأ من أي وحدة ودرس، وضع خطة علاج مختصرة.",
   smart_path: "اعمل لي مسار مذاكرة ذكي لهذه المادة: ترتيب الدروس من الأسهل للأصعب، ماذا أذاكر أولًا، وكيف أراجع، مع تقسيم: فهم - حل - تصحيح - بنك أخطاء - اختبار.",
   tomorrow: "عندي امتحان بكرة في هذه المادة. اعمل خطة إنقاذ في 6 ساعات: أهم الدروس، أهم القوانين/الأفكار، الأسئلة المتوقعة، بنك أخطاء سريع، ومتى أنام.",
   plan: "اعمل خطة مذاكرة شخصية لهذه المادة حسب الوقت المتاح. اسألني عن عدد الأيام والساعات ومستواي، ثم قسم الخطة يوميًا بمهام واضحة.",
   weakness: "اسألني 7 أسئلة عن نقاط ضعفي في هذه المادة، ثم حدد نوع الضعف: فهم/حفظ/تطبيق/تسرع/قراءة السؤال، واقترح علاجًا عمليًا."
 };
 
-export const LESSON_DATA: Subject[] = [
-  {
-    "track": "مشترك",
-    "title": "اللغة العربية",
-    "icon": "ع",
-    "color": "#f59e0b",
-    "slug": "subject-01",
-    "units": [
-      {
-        "title": "القراءة والفهم المتحرر",
-        "slug": "subject-01-unit-01",
-        "lessons": [
-          { "id": "L0001", "title": "الفكرة الرئيسية والأفكار الفرعية", "summary": "يدرب درس الفكرة الرئيسية والأفكار الفرعية الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "القراءة والفهم المتحرر"], "slug": "subject-01-unit-01-lesson-01", "order": 1 },
-          { "id": "L0002", "title": "معنى الكلمة من السياق", "summary": "يدرب درس معنى الكلمة من السياق الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "القراءة والفهم المتحرر"], "slug": "subject-01-unit-01-lesson-02", "order": 2 },
-          { "id": "L0003", "title": "العلاقات بين الجمل والفقرات", "summary": "يدرب درس العلاقات بين الجمل والفقرات الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "القراءة والفهم المتحرر"], "slug": "subject-01-unit-01-lesson-03", "order": 3 },
-          { "id": "L0004", "title": "استنتاج الهدف والاتجاه", "summary": "يدرب درس استنتاج الهدف والاتجاه الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "القراءة والفهم المتحرر"], "slug": "subject-01-unit-01-lesson-04", "order": 4 },
-          { "id": "L0005", "title": "تحليل الرأي والحجة والدليل", "summary": "يدرب درس تحليل الرأي والحجة والدليل الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "القراءة والفهم المتحرر"], "slug": "subject-01-unit-01-lesson-05", "order": 5 }
-        ]
-      },
-      {
-        "title": "النصوص والبلاغة التطبيقية",
-        "slug": "subject-01-unit-02",
-        "lessons": [
-          { "id": "L0009", "title": "تحليل العاطفة والفكرة", "summary": "يدرب درس تحليل العاطفة والفكرة الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "النصوص والبلاغة التطبيقية"], "slug": "subject-01-unit-02-lesson-01", "order": 1 },
-          { "id": "L0010", "title": "التشبيه وأنواعه", "summary": "يدرب درس التشبيه وأنواعه الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "النصوص والبلاغة التطبيقية"], "slug": "subject-01-unit-02-lesson-02", "order": 2 },
-          { "id": "L0011", "title": "الاستعارة المكنية والتصريحية", "summary": "يدرب درس الاستعارة المكنية والتصريحية الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "النصوص والبلاغة التطبيقية"], "slug": "subject-01-unit-02-lesson-03", "order": 3 },
-          { "id": "L0012", "title": "الكناية وسر الجمال", "summary": "يدرب درس الكناية وسر الجمال الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "النصوص والبلاغة التطبيقية"], "slug": "subject-01-unit-02-lesson-04", "order": 4 },
-          { "id": "L0013", "title": "المجاز المرسل والعلاقات", "summary": "يدرب درس المجاز المرسل والعلاقات الطالب على الفهم والاستخدام الصحيح في السياق، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "النصوص والبلاغة التطبيقية"], "slug": "subject-01-unit-02-lesson-05", "order": 5 }
-        ]
-      },
-      {
-        "title": "النحو وصياغة القواعد",
-        "slug": "subject-01-unit-03",
-        "lessons": [
-          { "id": "L0019", "title": "الجملة الاسمية والفعلية", "summary": "يدرب درس الجملة الاسمية والفعلية الطالب على الفهم والاستخدام النحوي، مع أمثلة وتطبيقات وأسئلة امتحانية قصيرة.", "quickTask": "اقرأ المثال، استخرج القاعدة، ثم طبق على جملة جديدة.", "tags": ["مشترك", "اللغة العربية", "النحو"], "slug": "subject-01-unit-03-lesson-01", "order": 1 },
-          { "id": "L0020", "title": "المبتدأ والخبر وأنواعهما", "summary": "يدرب درس المبتدأ والخبر وأنواعهما الطالب على الإعراب الدقيق وتحديد نوع الخبر وصور تقدمه.", "quickTask": "حدد ركني الجملة واستخرج المبتدأ المؤخر مع التعليل.", "tags": ["مشترك", "اللغة العربية", "النحو"], "slug": "subject-01-unit-03-lesson-02", "order": 2 },
-          { "id": "L0021", "title": "كان وأخواتها وضوابط عملها", "summary": "شرح الأفعال الناقصة والتامة وحالات عملها وتأثيرها على صياغة الجملة النحوية.", "quickTask": "ميز كان التامة من الناقصة في الأمثلة المطروحة.", "tags": ["مشترك", "اللغة العربية", "النحو"], "slug": "subject-01-unit-03-lesson-03", "order": 3 },
-          { "id": "L0022", "title": "إن وأخواتها ولا النافية للجنس", "summary": "توضيح الحروف الناسخة وشروط عمل لا النافية للجنس وأحكام اسم الاسم وخبره.", "quickTask": "أعرب الجملة بعد إدخال لا النافية للجنس العاملة.", "tags": ["مشترك", "اللغة العربية", "النحو"], "slug": "subject-01-unit-03-lesson-04", "order": 4 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "مشترك",
-    "title": "English",
-    "icon": "EN",
-    "color": "#22c55e",
-    "slug": "subject-02",
-    "units": [
-      {
-        "title": "Grammar & Structure",
-        "slug": "subject-02-unit-01",
-        "lessons": [
-          { "id": "L0057", "title": "Present Tenses & Usage", "summary": "Comprehensive analysis of modern English present tenses, contextual rules, and common pitfalls.", "quickTask": "Write 3 sentences highlighting state vs action verbs.", "tags": ["مشترك", "English", "Grammar"], "slug": "subject-02-unit-01-lesson-01", "order": 1 },
-          { "id": "L0058", "title": "Past Tenses & Narrative Styles", "summary": "Understand past simple, continuous, perfect, and habitual actions in narrative contexts.", "quickTask": "Differentiate between 'used to' and 'would' in writing.", "tags": ["مشترك", "English", "Grammar"], "slug": "subject-02-unit-01-lesson-02", "order": 2 },
-          { "id": "L0059", "title": "Future Forms & Intentions", "summary": "Rules for will, going to, present continuous, and present simple in denoting future actions.", "quickTask": "Match statements to spontaneous decisions vs pre-planned.", "tags": ["مشترك", "English", "Grammar"], "slug": "subject-02-unit-01-lesson-03", "order": 3 }
-        ]
-      },
-      {
-        "title": "Vocabulary & Context",
-        "slug": "subject-02-unit-02",
-        "lessons": [
-          { "id": "L0072", "title": "Word Formation & Suffixes", "summary": "Master patterns of nominal and adjectival shifts for exam vocabularies.", "quickTask": "Derive noun, verb, and adverb from 'create'.", "tags": ["مشترك", "English", "Vocabulary"], "slug": "subject-02-unit-02-lesson-01", "order": 1 },
-          { "id": "L0073", "title": "Collocations & Idiom Usage", "summary": "Familiarize yourself with natural English verb-noun pairings and contextually required idioms.", "quickTask": "Compare the meaning of 'make an effort' vs 'do a favor'.", "tags": ["مشترك", "English", "Vocabulary"], "slug": "subject-02-unit-02-lesson-02", "order": 2 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "علمي علوم / علمي رياضة",
-    "title": "الفيزياء",
-    "icon": "Φ",
-    "color": "#38bdf8",
-    "slug": "subject-04",
-    "units": [
-      {
-        "title": "الكهربية والتيار المستمر",
-        "slug": "subject-04-unit-01",
-        "lessons": [
-          { "id": "L0133", "title": "التيار الكهربي وفرق الجهد", "summary": "فهم حركة الشحنات وشدة التيار وفرق الجهد الكهربي وقانون أوم وسرعة الانجراف.", "quickTask": "احسب عدد الإلكترونات المارة في مقطع سلك خلال دقيقة بتيار شدته 5 أمبير.", "tags": ["علمي علوم / علمي رياضة", "الفيزياء", "الكهربية والتيار المستمر"], "slug": "subject-04-unit-01-lesson-01", "order": 1 },
-          { "id": "L0134", "title": "المقاومة الكهربية والنوعية", "summary": "العوامل المؤثرة على مقاومة الموصل والمقاومة النوعية والتوصيلية ومقارنة بين سلكين.", "quickTask": "ماذا يحدث لمقاومة سلك إذا سحب ليزداد طوله للضعف ويقل قطره للنصف؟", "tags": ["علمي علوم / علمي رياضة", "الفيزياء", "الكهربية والتيار المستمر"], "slug": "subject-04-unit-01-lesson-02", "order": 2 },
-          { "id": "L0135", "title": "قانونا كيرشوف", "summary": "دراسة قانون كيرشوف الأول (حفظ الشحنة) والثاني (حفظ الطاقة) لحل الدوائر المعقدة.", "quickTask": "اكتب معادلات كيرشوف الثلاث لمسار مغلق يحتوي على بطاريتين ومقومات متوازية.", "tags": ["علمي علوم / علمي رياضة", "الفيزياء", "الكهربية والتيار المستمر"], "slug": "subject-04-unit-01-lesson-03", "order": 3 }
-        ]
-      },
-      {
-        "title": "التأثير المغناطيسي للحمل",
-        "slug": "subject-04-unit-02",
-        "lessons": [
-          { "id": "L0142", "title": "المجال المغناطيسي لسلك مستقيم", "summary": "قانون بيو-سافار، شكل خطوط الفيض، قاعدة أمبير لليد اليمنى ونقاط التعادل الكهربي.", "quickTask": "حدد نقطة التعادل بين سلكين يمر بهما تياران في نفس الاتجاه.", "tags": ["علمي علوم / علمي رياضة", "الفيزياء", "التأثير المغناطيسي والحث"], "slug": "subject-04-unit-02-lesson-01", "order": 1 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "علمي علوم / علمي رياضة",
-    "title": "الكيمياء",
-    "icon": "⚗",
-    "color": "#a855f7",
-    "slug": "subject-05",
-    "units": [
-      {
-        "title": "العناصر الانتقالية",
-        "slug": "subject-05-unit-01",
-        "lessons": [
-          { "id": "L0168", "title": "التركيب الإلكتروني وحالات التأكسد", "summary": "توزيع السلسلة الانتقالية الأولى وشذوذ الكروم والنحاس وأقصى حالات التأكسد الممكنة.", "quickTask": "اكتب التوزيع الإلكتروني لأيون الحديد III وأيون المنجنيز II.", "tags": ["علمي علوم / علمي رياضة", "الكيمياء", "العناصر الانتقالية"], "slug": "subject-05-unit-01-lesson-01", "order": 1 },
-          { "id": "L0169", "title": "الحديد وخاماته واستخلاصه", "summary": "مراحل تجهيز الخام والاختزال في الأفران العالية وفرن مدركس ثم إنتاج الصلب.", "quickTask": "وضح بالمعادلات الكيميائية اختزال الهيماتيت في فرن مدركس.", "tags": ["علمي علوم / علمي رياضة", "الكيمياء", "العناصر الانتقالية"], "slug": "subject-05-unit-01-lesson-02", "order": 2 }
-        ]
-      },
-      {
-        "title": "التحليل الكيميائي",
-        "slug": "subject-05-unit-02",
-        "lessons": [
-          { "id": "L0176", "title": "الكشف عن الأنيونات (مجموعة HCl)", "summary": "الكشف عن الكربونات، البيكربونات، الكبريتيت، الكبريتيد، الثيوكبريتات والنيتريت.", "quickTask": "وضح كيف تفرق عملياً بين محاليل كربونات وبيكربونات الصوديوم.", "tags": ["علمي علوم / علمي رياضة", "الكيمياء", "التحليل الكيميائي والكمي"], "slug": "subject-05-unit-02-lesson-01", "order": 1 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "علمي علوم",
-    "title": "الأحياء",
-    "icon": "DNA",
-    "color": "#10b981",
-    "slug": "subject-06",
-    "units": [
-      {
-        "title": "الوراثة الجزيئية (DNA)",
-        "slug": "subject-06-unit-01",
-        "lessons": [
-          { "id": "L0204", "title": "أدلة إثبات أن DNA المادة الوراثية", "summary": "تجارب التحول البكتيري لجريفث وأفيري، وتجربة لاقمات البكتيريا لهيرشي وتشيسمان.", "quickTask": "وضح دور الأنزيم المحلل لـ DNA في إثبات المادة الوراثية قطعيًا.", "tags": ["علمي علوم", "الأحياء", "الخلية والوراثة الجزيئية"], "slug": "subject-06-unit-01-lesson-01", "order": 1 },
-          { "id": "L0205", "title": "تركيب الـ DNA وتضاعفه", "summary": "نموذج واتسون وكريك، شريطا المكملين المتعاكسين، وآلية التضاعف بواسطة إنزيم البلمرة والربط واللولب.", "quickTask": "ارسم نموذجًا مبسطًا لشوكة التضاعف محددًا اتجاه عمل إنزيم البلمرة.", "tags": ["علمي علوم", "الأحياء", "الخلية والوراثة الجزيئية"], "slug": "subject-06-unit-01-lesson-02", "order": 2 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "علمي رياضة",
-    "title": "رياضيات بحتة",
-    "icon": "∫",
-    "color": "#6366f1",
-    "slug": "subject-07",
-    "units": [
-      {
-        "title": "الجبر والهندسة الفراغية",
-        "slug": "subject-07-unit-01",
-        "lessons": [
-          { "id": "L0235", "title": "الأعداد المركبة ونظرية ديموافر", "summary": "الصورة الجبرية والمثلثية والأسية للعدد المركب، وإيجاد الجذور باستخدام نظرية ديموافر.", "quickTask": "ضع العدد المركب (1 + ت) في الصورة المثلثية ثم أوجد الجذور التربيعية لـه.", "tags": ["علمي رياضة", "رياضيات بحتة", "الجبر"], "slug": "subject-07-unit-01-lesson-01", "order": 1 },
-          { "id": "L0236", "title": "المحددات وخواصها الأساسية", "summary": "فك المحددات، الخواص الجبرية التسع لتسهيل الحساب والوصول للصيغة المثلثية.", "quickTask": "بدون فك المحدد أثبت تساويه مع قيمة معادلة من الدرجة الثالثة.", "tags": ["علمي رياضة", "رياضيات بحتة", "الجبر"], "slug": "subject-07-unit-01-lesson-02", "order": 2 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "أدبي",
-    "title": "التاريخ",
-    "icon": "⏳",
-    "color": "#92400e",
-    "slug": "subject-09",
-    "units": [
-      {
-        "title": "مصر الحديثة والمعاصرة",
-        "slug": "subject-09-unit-01",
-        "lessons": [
-          { "id": "L0290", "title": "مصر تحت الحكم العثماني", "summary": "الحالة السياسية والاقتصادية والاجتماعية في مصر تحت السيطرة العثمانية قبيل الحملة الفرنسية.", "quickTask": "قارن بين نظام الالتزام ونظام الالتزام الضريبي للمزارعين.", "tags": ["أدبي", "التاريخ", "مصر الحديثة والمعاصرة"], "slug": "subject-09-unit-01-lesson-01", "order": 1 },
-          { "id": "L0291", "title": "الحملة الفرنسية على مصر والشام", "summary": "أسباب الحملة الفرنسية بقيادة نابليون بونابرت، المقاومة المجتمعية، والآثار العلمية والسياسية للحملة.", "quickTask": "لخص أهم الآثار الفكرية والعلمية المترتبة على المجمع العلمي المصري.", "tags": ["أدبي", "التاريخ", "مصر الحديثة والمعاصرة"], "slug": "subject-09-unit-01-lesson-02", "order": 2 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "أدبي",
-    "title": "الجغرافيا السياسية",
-    "icon": "🌍",
-    "color": "#0ea5e9",
-    "slug": "subject-10",
-    "units": [
-      {
-        "title": "الدولة والجغرافيا السياسية",
-        "slug": "subject-10-unit-01",
-        "lessons": [
-          { "id": "L0311", "title": "مفهوم الدولة ومقوماتها الجغرافية", "summary": "الفرق بين الدولة والأمة، أنواع الدول من حيث النظام السياسي والإداري (وحدوية، اتحادية).", "quickTask": "استخرج ثلاثة فروق جوهرية بين تنظيم الدولة الكونفدرالية والدولة الفيدرالية.", "tags": ["أدبي", "الجغرافيا السياسية", "الدولة والجغرافيا السياسية"], "slug": "subject-10-unit-01-lesson-01", "order": 1 }
-        ]
-      }
-    ]
-  },
-  {
-    "track": "مشترك",
-    "title": "الكمبيوتر وتكنولوجيا المعلومات",
-    "icon": "AI",
-    "color": "#2563eb",
-    "slug": "subject-14",
-    "units": [
-      {
-        "title": "مهارات التكنولوجيا والبرمجة",
-        "slug": "subject-14-unit-01",
-        "lessons": [
-          { "id": "L0364", "title": "الخوارزميات والتفكير المنطقي", "summary": "أساسيات تصميم الخوارزميات، خرائط التدفق، وربطها بالتفكير العلمي المنظم لحل المشكلات.", "quickTask": "ارسم خريطة تدفق مبسطة لإيجاد المجموع الحسابي للأرقام من 1 إلى 50.", "tags": ["مشترك", "الكمبيوتر وتكنولوجيا المعلومات", "مهارات رقمية"], "slug": "subject-14-unit-01-lesson-01", "order": 1 },
-          { "id": "L0365", "title": "الذكاء الاصطناعي في التعليم", "summary": "تعريف شبكات التعلم العميق والشبكات العصبية، والذكاء الاصطناعي التوليدي ومستقبل الأنظمة المساعد رقمياً للطلبة.", "quickTask": "كيف تستغل الروبوتات التعليمية ووكلاء الذكاء الاصطناعي في المراجعة الفعالة لمادة الفيزياء؟", "tags": ["مشترك", "الكمبيوتر وتكنولوجيا المعلومات", "مهارات رقمية"], "slug": "subject-14-unit-01-lesson-02", "order": 2 }
-        ]
-      }
-    ]
-  }
+import { EDUCATION_DATA_RAW } from './data/education-data-2025-2026.ts';
+
+const ORIGINAL_SUBJECTS = [
+  ...GRADE1_LESSON_DATA,
+  ...GRADE2_LESSON_DATA,
+  ...GRADE3_LESSON_DATA
 ];
+
+function findMatchingOriginalSubject(rawSub: Subject): Subject | undefined {
+  const clean = (s: string) => s.toLowerCase().replace(/[^a-z0-9أ-ي]/g, '');
+  const rTitle = clean(rawSub.title);
+  
+  return ORIGINAL_SUBJECTS.find(orig => {
+    // 1. Check gradeId
+    if (orig.gradeId && orig.gradeId !== rawSub.gradeId) return false;
+    
+    // 2. Check termId
+    if (orig.termId && rawSub.termId && orig.termId !== rawSub.termId) return false;
+
+    // 3. Align and check track
+    const getNormTrack = (t?: string) => {
+      if (!t) return 'مشترك';
+      const cleanT = t.toLowerCase();
+      if (cleanT.includes('science') || cleanT.includes('bio') || cleanT.includes('math') || cleanT.includes('علمي')) {
+        return 'علمي';
+      }
+      if (cleanT.includes('literary') || cleanT.includes('أدبي')) {
+        return 'أدبي';
+      }
+      return 'مشترك';
+    };
+
+    const oTrack = getNormTrack(orig.track);
+    const rTrack = getNormTrack(rawSub.track || rawSub.trackId);
+    
+    // If the original subject has a specific track, verify it is compatible with the raw subject track
+    if (oTrack !== 'مشترك' && rTrack !== 'مشترك' && oTrack !== rTrack) return false;
+    
+    const oTitle = clean(orig.title);
+    if (oTitle === rTitle) return true;
+    if (rTitle.includes(oTitle) || oTitle.includes(rTitle)) return true;
+    
+    if (rTitle.includes('english') && oTitle.includes('english')) return true;
+    if (rTitle.includes('arabic') && oTitle.includes('arabic')) return true;
+    if (rTitle.includes('فرنسي') && oTitle.includes('ثانية')) return true;
+    if (rTitle.includes('فرنسي') && oTitle.includes('french')) return true;
+    if (rTitle.includes('وطنية') && oTitle.includes('national')) return true;
+    if (rTitle.includes('وطنية') && oTitle.includes('مواطنة')) return true;
+    if (rTitle.includes('كيمياء') && oTitle.includes('كيمياء')) return true;
+    if (rTitle.includes('فيزياء') && oTitle.includes('فيزياء')) return true;
+    if (rTitle.includes('أحياء') && oTitle.includes('أحياء')) return true;
+    if (rTitle.includes('جيولوجيا') && oTitle.includes('جيولوجيا')) return true;
+    if (rTitle.includes('جغرافيا') && oTitle.includes('جغرافيا')) return true;
+    if (rTitle.includes('تاريخ') && oTitle.includes('تاريخ')) return true;
+    if (rTitle.includes('فلسفة') && oTitle.includes('فلسفة')) return true;
+    if (rTitle.includes('رياضيات') && oTitle.includes('رياضيات')) return true;
+    if (rTitle.includes('رياضيات') && oTitle.includes('math')) return true;
+    if (rTitle.includes('برمجة') && (oTitle.includes('ict') || oTitle.includes('computer') || oTitle.includes('برمج'))) return true;
+    if (rTitle.includes('نفس') && oTitle.includes('نفس')) return true;
+    if (rTitle.includes('إحصاء') && oTitle.includes('إحصاء')) return true;
+    
+    return false;
+  });
+}
+
+export const EDUCATION_DATA: GradeData[] = EDUCATION_DATA_RAW.map(grade => {
+  return {
+    ...grade,
+    terms: grade.terms.map(term => {
+      return {
+        ...term,
+        tracks: term.tracks.map(track => {
+          return {
+            ...track,
+            subjects: track.subjects.map(rawSub => {
+              const matched = findMatchingOriginalSubject(rawSub);
+              if (matched && matched.units && matched.units.length > 0) {
+                return {
+                  ...rawSub,
+                  units: matched.units,
+                  slug: matched.slug || rawSub.slug
+                };
+              }
+              return rawSub;
+            })
+          };
+        })
+      };
+    })
+  };
+});
+
+// Flat list of all subjects across all grades/tracks/terms
+export const LESSON_DATA: Subject[] = [];
+EDUCATION_DATA.forEach(grade => {
+  grade.terms.forEach(term => {
+    term.tracks.forEach(track => {
+      track.subjects.forEach(sub => {
+        // Keep them localized by their distinct IDs to prevent collision in flat lookups
+        LESSON_DATA.push(sub);
+      });
+    });
+  });
+});
+

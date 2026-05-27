@@ -76,6 +76,11 @@ app.get('/api/status', (req, res) => {
   });
 });
 
+// Serve ChatGPT standalone tutor guide interactive workbook
+app.get('/chatgpt-tutor-guide.html', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'chatgpt-tutor-guide.html'));
+});
+
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
     // Development Mode - Mount dynamic Vite dev server middlewares

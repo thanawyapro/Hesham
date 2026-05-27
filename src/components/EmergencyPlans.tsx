@@ -13,14 +13,27 @@ interface EmergencyPlansProps {
 }
 
 export default function EmergencyPlans({ onGeneratePrompt }: EmergencyPlansProps) {
+  // Get unique subjects by title to avoid duplicates in dropdown lists
+  const uniqueSubjects = React.useMemo(() => {
+    const titles = new Set<string>();
+    const res: typeof LESSON_DATA = [];
+    for (const s of LESSON_DATA) {
+      if (!titles.has(s.title)) {
+        titles.add(s.title);
+        res.push(s);
+      }
+    }
+    return res;
+  }, []);
+
   // Option 1: Study hours calendar plan
-  const [targetSubject, setTargetSubject] = useState<string>(LESSON_DATA[0].title);
+  const [targetSubject, setTargetSubject] = useState<string>(uniqueSubjects[0]?.title || 'اللغة العربية');
   const [daysCount, setDaysCount] = useState<number>(7);
   const [dailyHours, setDailyHours] = useState<number>(3);
   const [currentLevel, setCurrentLevel] = useState<string>('متوسط');
 
   // Option 2: Exam tomorrow prep
-  const [examSubject, setExamSubject] = useState<string>(LESSON_DATA[0].title);
+  const [examSubject, setExamSubject] = useState<string>(uniqueSubjects[0]?.title || 'اللغة العربية');
 
   // Generates custom study calendar prompt
   const generateCalendarStudyPlan = () => {
@@ -67,8 +80,8 @@ export default function EmergencyPlans({ onGeneratePrompt }: EmergencyPlansProps
               value={targetSubject}
               onChange={(e) => setTargetSubject(e.target.value)}
             >
-              {LESSON_DATA.map(s => (
-                <option key={s.slug} value={s.title}>{s.title}</option>
+              {uniqueSubjects.map(s => (
+                <option key={s.subjectId || s.slug} value={s.title}>{s.title}</option>
               ))}
             </select>
           </div>
@@ -139,8 +152,8 @@ export default function EmergencyPlans({ onGeneratePrompt }: EmergencyPlansProps
             value={examSubject}
             onChange={(e) => setExamSubject(e.target.value)}
           >
-            {LESSON_DATA.map(s => (
-              <option key={s.slug} value={s.title}>{s.title}</option>
+            {uniqueSubjects.map(s => (
+              <option key={s.subjectId || s.slug} value={s.title}>{s.title}</option>
             ))}
           </select>
         </div>
